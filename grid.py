@@ -3,6 +3,7 @@ import numpy as np
 class Grid:
   def __init__(self, boards):
     self.grid = np.stack((boards))
+
   def __repr__(self):
     for board in self.grid:
       for line in board:
@@ -11,6 +12,7 @@ class Grid:
         print('\n')
       print('*'*35)
     return ' '
+
   def checkPlane(self, n):
     for line in range(4):
       if self.grid[n, line, 0] == 0:
@@ -50,18 +52,22 @@ class Grid:
         print(f'Plane {n} wins')
         return True
     return self.interPlane()
-      
-grid = Grid([np.zeros((4,4)) for _ in range(4)])
 
-player = 1
-while True:
-  print(grid)
-  board_number = int(input('board:'))
-  x_board = int(input('x_board:'))
-  y_board = int(input('y_board:'))
-  grid.grid[board_number, x_board, y_board] = player
+def main():
+  grid = Grid([np.zeros((4,4)) for _ in range(4)])
 
-  if grid.winner():
-    print(f'player {player} wins')
-    break
-  player *= -1
+  player = 1
+  while True:
+    print(grid)
+    board_number = int(input('board:'))
+    x_board = int(input('x_board:'))
+    y_board = int(input('y_board:'))
+    grid.grid[board_number, x_board, y_board] = player
+
+    if grid.winner():
+      print(f'player {player} wins')
+      break
+    player *= -1
+
+if __name__ == '__main__':
+  main()
