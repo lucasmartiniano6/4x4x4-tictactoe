@@ -41,18 +41,19 @@ def input(key):
   for plane in [plane1, plane2]:
     for l in plane.cubes:
       for cube in l:
-        cube.rotation_y -= held_keys['w'] * time.dt *speed
-        cube.rotation_y += held_keys['s'] * time.dt *speed
-        cube.rotation_x += held_keys['d'] * time.dt *speed
-        cube.rotation_x -= held_keys['a'] * time.dt *speed
+        cube.rotation_x -= held_keys['w'] * time.dt *speed
+        cube.rotation_x += held_keys['s'] * time.dt *speed
+        cube.rotation_y -= held_keys['d'] * time.dt *speed
+        cube.rotation_y += held_keys['a'] * time.dt *speed
 
 def update():
-  speed = 6
+  speed = 7
   camera.y += held_keys['w'] * time.dt * speed
   camera.y -= held_keys['s'] * time.dt * speed
-  camera.x -= held_keys['d'] * time.dt * speed
-  camera.x += held_keys['a'] * time.dt * speed
+  camera.x += held_keys['d'] * time.dt * speed
+  camera.x -= held_keys['a'] * time.dt * speed
 
   camera.z += held_keys['e'] * time.dt * speed * 3
   camera.z -= held_keys['q'] * time.dt * speed * 3
+
 app.run()
